@@ -24,6 +24,7 @@ class Turtle extends Animal{
     }
 }
 
+
 public class over_2 {
     public static void main(String[] args) {
         Animal a = new Animal("꼬부기");
