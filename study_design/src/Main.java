@@ -1,5 +1,4 @@
-import com.company.design.adapter.Electronic110V;
-import com.company.design.adapter.HairDryer;
+import com.company.design.adapter.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,6 +15,14 @@ public class Main {
          */
         HairDryer hairDryer = new HairDryer();
         connect(hairDryer);
+
+        AirConditioner airConditioner = new AirConditioner();
+        Electronic110V adapter = new SocketAdapter(airConditioner);
+        connect(adapter);
+
+        Cleaner cleaner = new Cleaner();
+        Electronic110V cleanAdapter = new SocketAdapter(cleaner);
+        connect(cleanAdapter);
     }
 
     //콘센트
