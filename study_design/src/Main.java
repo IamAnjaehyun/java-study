@@ -5,6 +5,7 @@ import com.company.design.facade.SftpClient;
 import com.company.design.facade.Writer;
 import com.company.design.observer.Button;
 import com.company.design.observer.IButtonListener;
+import com.company.design.strategy.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -137,6 +138,29 @@ public class Main {
 
         sftpClient.disConnect();
          */
+
+        //strategy pattern
+        Encoder encoder = new Encoder();
+
+        //base64
+        EncodingStrategy base64 = new Base64Strategy();
+
+        //normal
+        EncodingStrategy normal = new NormalStrategy();
+        //원본객체 그대로 주 전략만 수정해서 다른 결과를 얻어냄
+        String message = "hello java";
+
+        encoder.setEncodingStrategy(base64);
+        String base64result = encoder.getMessage(message);
+        System.out.println(base64result);
+
+        encoder.setEncodingStrategy(normal);
+        String normalResult = encoder.getMessage(message);
+        System.out.println(normalResult);
+
+        encoder.setEncodingStrategy(new AppendStrategy());
+        String appendResult = encoder.getMessage(message);
+        System.out.println(appendResult);
 
     }
 
