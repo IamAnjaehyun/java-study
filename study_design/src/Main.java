@@ -1,11 +1,15 @@
 import com.company.design.decorator.*;
+import com.company.design.facade.Ftp;
+import com.company.design.facade.Reader;
+import com.company.design.facade.SftpClient;
+import com.company.design.facade.Writer;
 import com.company.design.observer.Button;
 import com.company.design.observer.IButtonListener;
 
 public class Main {
     public static void main(String[] args) {
         /*
-//        SingleTone예제
+        //SingleTon 예제
         AClazz aClazz= new AClazz();
         BClazz bClazz= new BClazz();
 
@@ -31,18 +35,18 @@ public class Main {
          */
 
         /*
-        Proxy pattern
-//        Browser browser = new Browser("www.naver.com");
-//        browser.show();
-//        browser.show();
-//        browser.show();
+        //Proxy pattern
+        IBrowser browser = new Browser("www.naver.com");
+        browser.show();
+        browser.show();
+        browser.show();
 
-//        IBrowser browser = new BrowserProxy("www.naver.com");
-//        browser.show();
-//        browser.show();
-//        browser.show();
-//        browser.show();
-//        browser.show();
+        IBrowser browser = new BrowserProxy("www.naver.com");
+        browser.show();
+        browser.show();
+        browser.show();
+        browser.show();
+        browser.show();
 
         AtomicLong start = new AtomicLong();
         AtomicLong end = new AtomicLong();
@@ -70,6 +74,7 @@ public class Main {
          */
 
         /*
+        //decorator pattern
         ICar audi = new Audi(1000);
         audi.showPrice();
 
@@ -99,6 +104,40 @@ public class Main {
         button.click("메세지 전달 : click 3");
         button.click("메세지 전달 : click 4");
         */
+
+        /*
+        facade pattern
+        System.out.println("facade pattern 사용  ");
+
+        Ftp ftpClient = new Ftp("www.foo.co.kr", 22, "/home/etc");
+        ftpClient.connect();
+        ftpClient.moveDirectory();
+
+        Writer writer = new Writer("text.tmp");
+        writer.fileConnect();
+        writer.write();
+
+        Reader reader = new Reader("text.tmp");
+        reader.fileConnect();
+        reader.fileRead();
+
+        reader.fileDisconnect();
+        writer.fileDisConnect();
+        ftpClient.disConnect();
+
+        System.out.println();
+        System.out.println("facade pattern 사용 후 ");
+        System.out.println();
+        SftpClient sftpClient = new SftpClient("www.foo.co.kr",22,"/home/etc","text.tmp");
+        sftpClient.connect();
+
+        sftpClient.write();
+
+        sftpClient.read();
+
+        sftpClient.disConnect();
+         */
+
     }
 
     /*
